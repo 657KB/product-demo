@@ -18,7 +18,7 @@ const ProductCard: FC<ProductCard> = ({ product, delay, onClick }) => {
       className='group flex flex-col cursor-pointer hover:brightness-110'
       onClick={onClick}
     >
-      <div className='relative overflow-hidden mb-2 h-0 flex-1'>
+      <div className='relative overflow-hidden mb-2 h-0 flex-1 min-h-[200px]'>
         <img
           className='group-hover:scale-110 transition-all w-full h-full object-cover duration-300'
           src={image}
