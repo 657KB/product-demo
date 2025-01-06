@@ -14,6 +14,7 @@ const ProductCard: FC<ProductCard> = ({ product, delay, onClick }) => {
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.3, delay } }}
+      layoutId={`${product.id}${product.title}`}
       className='group flex flex-col cursor-pointer hover:brightness-110'
       onClick={onClick}
     >
