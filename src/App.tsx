@@ -21,7 +21,7 @@ function App() {
 
   return (
     <main>
-      <div className='px-16 py-12'>
+      <div className='px-4 py-4 md:px-16 md:py-12'>
         <PageTitle isPending={isPending} />
         <CategorySelector
           categories={categories}

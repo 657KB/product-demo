@@ -2,7 +2,7 @@ import { motion } from 'motion/react'
 
 const PageTitle = ({ isPending }: { isPending: boolean }) => {
   return (
-    <div className='text-8xl mb-4 font-semibold overflow-hidden'>
+    <div className='text-6xl md:text-8xl mb-4 font-semibold overflow-hidden'>
       <motion.h1
         initial={{ transform: 'translate3d(0, 100%, 0)' }}
         animate={{
