@@ -27,7 +27,7 @@ const CategorySelector: FC<CategorySelectorProps> = ({
         <span
           key={category}
           className={classNames(
-            'inline-block pr-4 text-lg text-black hover:cursor-pointer hover:opacity-100 transition-all select-none',
+            'inline-block pr-4 text-lg text-black dark:text-white hover:cursor-pointer hover:opacity-100 transition-all select-none',
             (selectedCategory === category || (category === 'All' && selectedCategory === null))? 'opacity-80' : 'opacity-40',
           )}
           onClick={() => selectCategory(category)}

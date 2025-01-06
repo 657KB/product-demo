@@ -34,7 +34,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
               }
             : undefined
         }
-        className='fixed right-0 top-0 bottom-0 w-[50vw] bg-white shadow-lg space-y-6 flex flex-col'
+        className='fixed right-0 top-0 bottom-0 w-[50vw] bg-white dark:bg-zinc-800 shadow-lg space-y-6 flex flex-col'
         style={{ minWidth: 'min(100vw, 400px)' }}
         onClick={e => e.stopPropagation()}
       >
@@ -65,7 +65,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
               className='px-6 text-sm space-x-4'
             >
                 {productWithDes.category?.map(c => (
-                  <span key={c} className='bg-gray-200 px-2 py-1 rounded'>{c}</span>
+                  <span key={c} className='bg-gray-200 dark:bg-zinc-600 px-2 py-1 rounded'>{c}</span>
                 ))}
             </motion.div>
             <motion.div
@@ -80,7 +80,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
               animate={{ opacity: 1, transition: { duration: 0.3, delay: 0.32 } }}
               className={`\
                 mx-6 px-6 py-2 text-lg w-fit rounded-lg cursor-pointer \
-                bg-zinc-900 text-white hover:shadow-lg \
+                bg-zinc-900 dark:bg-slate-500 text-white hover:shadow-lg \
                 transition-all duration-300 \
               `}
             >
