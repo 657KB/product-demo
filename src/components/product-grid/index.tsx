@@ -24,8 +24,10 @@ const ProductGrid: FC<ProductGridProps> = ({ products, isPending, onClickProduct
         setCols(3)
       } else if (window.screen.availWidth < 1280) {
         setCols(4)
-      } else {
+      } else if (window.screen.availWidth < 1536) {
         setCols(5)
+      } else {
+        setCols(6)
       }
     }
     updateCols()
@@ -50,7 +52,7 @@ const ProductGrid: FC<ProductGridProps> = ({ products, isPending, onClickProduct
       >
         Total {products?.length || 0} products
       </motion.div>
-      <div className={classNames('grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5')}>
+      <div className={classNames('grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6')}>
         {products?.map((product, i) => (
           <ProductCard
             key={`${product.id}`}
