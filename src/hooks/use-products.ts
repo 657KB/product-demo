@@ -1,19 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useMemo } from 'react'
 import { Product } from '../models/product'
 
-export const useProducts = (products: Product[] = []) => {
-  const [visibleProducts, setVisibleProducts] = useState(products)
-
-  const filterProducts = (category: string | null) => {
+export const useProducts = (products: Product[] = [], category: string | null) => {
+  const visibleProducts = useMemo(() => {
     if (category === null) {
-      setVisibleProducts(products)
-    } else {
-      const filtered = products.filter(product => product.category.indexOf(category) !== -1)
-      setVisibleProducts(filtered)
+      return products
     }
-  }
+    return products.filter(product => product.category.indexOf(category) !== -1)
+  }, [category, products])
 
-  useEffect(() => setVisibleProducts(products), [products])
-
-  return { visibleProducts, filterProducts }
+  return { visibleProducts }
 }

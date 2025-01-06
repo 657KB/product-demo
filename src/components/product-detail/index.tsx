@@ -65,7 +65,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
               className='px-6 text-sm space-x-4'
             >
                 {productWithDes.category?.map(c => (
-                  <span className='bg-gray-200 px-2 py-1 rounded'>{c}</span>
+                  <span key={c} className='bg-gray-200 px-2 py-1 rounded'>{c}</span>
                 ))}
             </motion.div>
             <motion.div

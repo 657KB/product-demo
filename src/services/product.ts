@@ -1,4 +1,3 @@
-import { faker } from '@faker-js/faker'
 import { randomInt } from '../utils/random'
 import { Product } from '../models/product'
 
@@ -15,10 +14,10 @@ export const fetchProducts = () => {
   console.debug(`fetch product`)
   const mockData = Array.from({ length: 64 }).map((_, i) => ({
     id: `${i}`,
-    title: `Product_${faker.string.alpha(6)}`,
+    title: `Product_${i}`,
     image: `/images/${i % 6 + 1}.avif`,
-    category: Array.from(new Set(Array.from({ length: randomInt(4, 1) }).map(() => categories[randomInt(9)]))),
-    price: randomInt(1000, 100),
+    category: [categories[i % categories.length]],
+    price: 100 + (i % 5) * 100,
   }))
   return new Promise<Product[]>(resolve => {
     setTimeout(() => resolve(mockData), randomInt(1200, 300))

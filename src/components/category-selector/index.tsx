@@ -1,23 +1,22 @@
 import type { FC } from 'react'
 import { motion } from 'motion/react'
-import type { Product } from '../../models/product'
-import { useCategory } from '../../hooks/use-category'
 import { classNames } from '../../utils/classnames'
 
 type CategorySelectorProps = {
-  products?: Product[]
+  categories: string[]
+  selectedCategory: string | null
   onSelectedCategoryChange: (category: string | null) => void
 }
 
-const CategorySelector: FC<CategorySelectorProps> = ({ products, onSelectedCategoryChange }) => {
-  const { categories, selectedCategory, setSelectedCategory } = useCategory(products)
-
+const CategorySelector: FC<CategorySelectorProps> = ({
+  categories,
+  selectedCategory,
+  onSelectedCategoryChange,
+}) => {
   const selectCategory = (category: string) => {
     if (category === 'All') {
-      setSelectedCategory(null)
       onSelectedCategoryChange(null)
     } else {
-      setSelectedCategory(category)
       onSelectedCategoryChange(category)
     }
   }
