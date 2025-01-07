@@ -52,8 +52,8 @@ const ProductGrid: FC<ProductGridProps> = ({ products, selectedProduct, isPendin
         Total {products?.length || 0} products
       </motion.div>
       <div className={classNames(
-        'grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
-        'sm:gap-6 md:gap-8 lg:gap-10'
+        'grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
+        'lg:gap-6'
       )}>
         {products?.map((product, i) => (
           <ProductCard

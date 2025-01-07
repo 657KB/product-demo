@@ -51,7 +51,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, transition: { duration: 0.3 } }}
-              className='w-full h-[360px] overflow-hidden'
+              className='w-full h-[360px] overflow-hidden flex items-center justify-center'
             >
               <img className='w-full h-full object-cover' src={productWithDes.image} alt='product-img' />
             </motion.div>

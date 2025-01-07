@@ -9,23 +9,24 @@ type ProductCardProps = {
 } & React.HTMLAttributes<HTMLDivElement>
 
 const ProductCard: FC<ProductCardProps> = ({ product, delay, selected, onClick }) => {
-  const { image, title, price } = product
+  const { image, title, price, category } = product
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.3, delay } }}
       layoutId={`${product.id}${product.title}`}
-      className='group flex flex-col cursor-pointer hover:brightness-110 border-2 border-transparent data-[selected=true]:border-black dark:data-[selected=true]:border-white'
+      className='group flex flex-col cursor-pointer p-4 rounded border-2 border-gray data-[selected=true]:shadow-xl data-[selected=true]:border-black dark:data-[selected=true]:border-white'
       data-selected={selected}
       onClick={onClick}
+      title={title}
     >
       <div
-        className='relative overflow-hidden mb-2 h-0 flex-1'
+        className='relative overflow-hidden mb-2 h-0 flex-1 flex items-center'
         style={{ minHeight: 'min(20vh, 200px)', maxHeight: '40vh' }}
       >
         <img
-          className='group-hover:scale-110 transition-all w-full h-full object-cover duration-300'
+          className='group-hover:scale-110 transition-all object-cover duration-300'
           src={image}
           alt='product image'
         />
@@ -39,10 +40,9 @@ const ProductCard: FC<ProductCardProps> = ({ product, delay, selected, onClick }
           className='absolute top-0 left-0 right-0 bottom-0 bg-white'
         />
       </div>
-      <div className='flex text-lg'>
-        <div>{title}</div>
-        <div className='flex-1 text-end'>${price}</div>
-      </div>
+      <div className='text-lg text-ellipsis overflow-hidden text-nowrap'>{title}</div>
+      <div className='opacity-60'>{category}</div>
+      <div className='text-xl font-bold'>${price}</div>
     </motion.div>
   )
 }
