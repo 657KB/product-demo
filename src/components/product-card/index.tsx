@@ -16,7 +16,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, delay, selected, onClick }
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.3, delay } }}
       layoutId={`${product.id}${product.title}`}
-      className='group flex flex-col cursor-pointer p-4 rounded border-2 border-gray data-[selected=true]:shadow-xl data-[selected=true]:border-black dark:data-[selected=true]:border-white'
+      className='group flex flex-col cursor-pointer p-4 rounded border-2 border-gray-300 dark:border-zinc-800 data-[selected=true]:shadow-xl data-[selected=true]:border-black dark:data-[selected=true]:border-white'
       data-selected={selected}
       onClick={onClick}
       title={title}
