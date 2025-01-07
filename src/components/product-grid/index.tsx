@@ -8,26 +8,25 @@ import Loading from '../loading'
 type ProductGridProps = {
   products?: Product[]
   isPending: boolean
+  selectedProduct: Product | null
   onClickProduct: (product: Product) => void
 }
 
-const ProductGrid: FC<ProductGridProps> = ({ products, isPending, onClickProduct }) => {
+const ProductGrid: FC<ProductGridProps> = ({ products, selectedProduct, isPending, onClickProduct }) => {
   const [cols, setCols] = useState(1)
 
   useEffect(() => {
     const updateCols = () => {
-      if (window.screen.availWidth < 640) {
+      if (window.screen.availWidth < 768) {
         setCols(1)
-      } else if (window.screen.availWidth < 768) {
-        setCols(2)
       } else if (window.screen.availWidth < 1024) {
-        setCols(3)
+        setCols(2)
       } else if (window.screen.availWidth < 1280) {
-        setCols(4)
+        setCols(3)
       } else if (window.screen.availWidth < 1536) {
-        setCols(5)
+        setCols(4)
       } else {
-        setCols(6)
+        setCols(5)
       }
     }
     updateCols()
@@ -53,8 +52,8 @@ const ProductGrid: FC<ProductGridProps> = ({ products, isPending, onClickProduct
         Total {products?.length || 0} products
       </motion.div>
       <div className={classNames(
-        'grid gap-12 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6',
-        'sm:gap-4 md:gap-6 lg:gap-8 xl:gap-10'
+        'grid gap-12 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
+        'sm:gap-6 md:gap-8 lg:gap-10'
       )}>
         {products?.map((product, i) => (
           <ProductCard
@@ -62,6 +61,7 @@ const ProductGrid: FC<ProductGridProps> = ({ products, isPending, onClickProduct
             product={product}
             delay={(i % cols) * 0.1}
             onClick={() => onClickProduct(product)}
+            selected={product.id === selectedProduct?.id}
           />
         ))}
       </div>

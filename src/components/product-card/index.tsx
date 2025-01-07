@@ -2,12 +2,13 @@ import type { FC } from 'react'
 import { motion } from 'motion/react'
 import { Product } from '../../models/product'
 
-type ProductCard = {
+type ProductCardProps = {
   product: Product
   delay: number
+  selected: boolean
 } & React.HTMLAttributes<HTMLDivElement>
 
-const ProductCard: FC<ProductCard> = ({ product, delay, onClick }) => {
+const ProductCard: FC<ProductCardProps> = ({ product, delay, selected, onClick }) => {
   const { image, title, price } = product
 
   return (
@@ -15,10 +16,14 @@ const ProductCard: FC<ProductCard> = ({ product, delay, onClick }) => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1, transition: { duration: 0.3, delay } }}
       layoutId={`${product.id}${product.title}`}
-      className='group flex flex-col cursor-pointer hover:brightness-110'
+      className='group flex flex-col cursor-pointer hover:brightness-110 border-2 border-transparent data-[selected=true]:border-black dark:data-[selected=true]:border-white'
+      data-selected={selected}
       onClick={onClick}
     >
-      <div className='relative overflow-hidden mb-2 h-0 flex-1 min-h-[200px]'>
+      <div
+        className='relative overflow-hidden mb-2 h-0 flex-1'
+        style={{ minHeight: 'min(20vh, 200px)', maxHeight: '40vh' }}
+      >
         <img
           className='group-hover:scale-110 transition-all w-full h-full object-cover duration-300'
           src={image}

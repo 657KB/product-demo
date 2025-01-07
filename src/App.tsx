@@ -31,6 +31,7 @@ function App() {
         <div className='min-h-[20vh]'></div>
         <ProductGrid
           products={visibleProducts}
+          selectedProduct={selectedProduct}
           isPending={isPending}
           onClickProduct={product => setSelectedProduct(product)}
         />

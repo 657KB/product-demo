@@ -12,7 +12,7 @@ type ProductDetailProps = {
 
 const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
   const visible = product !== null
-  const { productWithDes, isPending } = useDetail(product)
+  const { productWithDes, isPending, error } = useDetail(product)
 
   usePageScroll(!visible)
 
@@ -38,12 +38,15 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
         style={{ minWidth: 'min(100vw, 400px)' }}
         onClick={e => e.stopPropagation()}
       >
+        {error && (
+          <div className='w-full h-full flex items-center justify-center'>error</div>
+        )}
         {isPending && (
           <div className='w-full h-full flex items-center justify-center'>
             <Loading />
           </div>
         )}
-        {!isPending && product !== null && (
+        {!isPending && !error && product !== null && (
           <>
             <motion.div
               initial={{ opacity: 0 }}
@@ -64,9 +67,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
               animate={{ opacity: 1, translateY: 0, transition: { duration: 0.3, delay: 0.16 } }}
               className='px-6 text-sm space-x-4'
             >
-                {productWithDes.category?.map(c => (
-                  <span key={c} className='bg-gray-200 dark:bg-zinc-600 px-2 py-1 rounded'>{c}</span>
-                ))}
+              <span className='bg-gray-200 dark:bg-zinc-600 px-2 py-1 rounded'>{productWithDes.category}</span>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, translateY: 4 }}
