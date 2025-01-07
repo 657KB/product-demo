@@ -25,7 +25,7 @@ export const fetchProducts = () => {
   // })
 }
 
-export const fetchProductDetail = (id: string) => {
+export const fetchProductDetail = (id: number) => {
   return baseFetch(`/products/${id}`)
   // console.debug(`fetch product detail [${id}]`)
   // return new Promise<{ description: string }>(resolve => {
