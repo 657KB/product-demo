@@ -6,7 +6,7 @@ export const useProducts = (products: Product[] = [], category: string | null) =
     if (category === null) {
       return products
     }
-    return products.filter(product => product.category.indexOf(category) !== -1)
+    return products.filter(product => product.category === category)
   }, [category, products])
 
   return { visibleProducts }
