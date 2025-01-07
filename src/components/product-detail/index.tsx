@@ -34,7 +34,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
               }
             : undefined
         }
-        className='fixed right-0 top-0 bottom-0 w-[50vw] bg-white dark:bg-zinc-800 shadow-lg space-y-6 flex flex-col'
+        className='fixed right-0 top-0 bottom-0 w-[50vw] bg-white dark:bg-zinc-800 shadow-lg space-y-6 overflow-auto'
         style={{ minWidth: 'min(100vw, 400px)' }}
         onClick={e => e.stopPropagation()}
       >
@@ -87,6 +87,7 @@ const ProductDetail: FC<ProductDetailProps> = ({ product, onClose }) => {
             >
               Buy ${productWithDes.price}
             </motion.div>
+            <div className='min-h-[10vh]' />
           </>
         )}
       </motion.div>
